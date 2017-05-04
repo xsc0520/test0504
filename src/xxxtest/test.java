@@ -5,11 +5,11 @@ public class test {
 	 
 	
 	 
-	    // JDBC Çı¶¯Ãû¼°Êı¾İ¿â URL
+	    // JDBC é©±åŠ¨ååŠæ•°æ®åº“ URL
 	    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	    static final String DB_URL = "jdbc:mysql://localhost:3306/mysql";
 	 
-	    // Êı¾İ¿âµÄÓÃ»§ÃûÓëÃÜÂë£¬ĞèÒª¸ù¾İ×Ô¼ºµÄÉèÖÃ
+	    // æ•°æ®åº“çš„ç”¨æˆ·åä¸å¯†ç ï¼Œéœ€è¦æ ¹æ®è‡ªå·±çš„è®¾ç½®
 	    static final String USER = "root";
 	    static final String PASS = "752113";
 	 
@@ -17,49 +17,50 @@ public class test {
 	        Connection conn = null;
 	        Statement stmt = null;
 	        try{
-	            // ×¢²á JDBC Çı¶¯
+			
+	            // æ³¨å†Œ JDBC é©±åŠ¨
 	            Class.forName("com.mysql.jdbc.Driver");
 	        
-	            // ´ò¿ªÁ´½Ó
-	            System.out.println("Á¬½ÓÊı¾İ¿â...");
+	            // æ‰“å¼€é“¾æ¥
+	            System.out.println("è¿æ¥æ•°æ®åº“...");
 	            conn = DriverManager.getConnection(DB_URL,USER,PASS);
 	        
-	            // Ö´ĞĞ²éÑ¯
-	            System.out.println(" ÊµÀı»¯Statement¶Ô...");
+	            // æ‰§è¡ŒæŸ¥è¯¢
+	            System.out.println(" å®ä¾‹åŒ–Statementå¯¹...");
 	            stmt = conn.createStatement();
 	            String sql;
 	            sql = "SELECT id, name, url FROM websites";
 	            ResultSet rs = stmt.executeQuery(sql);
 	        
-	            // Õ¹¿ª½á¹û¼¯Êı¾İ¿â
+	            // å±•å¼€ç»“æœé›†æ•°æ®åº“
 	            while(rs.next()){
-	                // Í¨¹ı×Ö¶Î¼ìË÷
+	                // é€šè¿‡å­—æ®µæ£€ç´¢
 	                int id  = rs.getInt("id");
 	                String name = rs.getString("name");
 	                String url = rs.getString("url");
 	    
-	                // Êä³öÊı¾İ
+	                // è¾“å‡ºæ•°æ®
 	                System.out.print("ID: " + id);
-	                System.out.print(", Õ¾µãÃû³Æ: " + name);
-	                System.out.print(", Õ¾µã URL: " + url);
+	                System.out.print(", ç«™ç‚¹åç§°: " + name);
+	                System.out.print(", ç«™ç‚¹ URL: " + url);
 	                System.out.print("\n");
 	            }
-	            // Íê³Éºó¹Ø±Õ
+	            // å®Œæˆåå…³é—­
 	            rs.close();
 	            stmt.close();
 	            conn.close();
 	        }catch(SQLException se){
-	            // ´¦Àí JDBC ´íÎó
+	            // å¤„ç† JDBC é”™è¯¯
 	            se.printStackTrace();
 	        }catch(Exception e){
-	            // ´¦Àí Class.forName ´íÎó
+	            // å¤„ç† Class.forName é”™è¯¯
 	            e.printStackTrace();
 	        }finally{
-	            // ¹Ø±Õ×ÊÔ´
+	            // å…³é—­èµ„æº
 	            try{
 	                if(stmt!=null) stmt.close();
 	            }catch(SQLException se2){
-	            }// Ê²Ã´¶¼²»×ö
+	            }// ä»€ä¹ˆéƒ½ä¸åš
 	            try{
 	                if(conn!=null) conn.close();
 	            }catch(SQLException se){
