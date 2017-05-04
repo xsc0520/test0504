@@ -3,7 +3,7 @@ import java.sql.*;
 public class test {
 	
 	 
-	
+	//xixi
 	 
 	    // JDBC 驱动名及数据库 URL
 	    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
